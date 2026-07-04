@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="logo">TechStore</div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="gaming.html">Gaming</a>
+    <a href="cameras.html">Cameras</a>
+    <a href="appliances.html">Appliances</a>
+    <a href="tablets.html">Tablets</a>
+    <a href="smarttv.html">Smart TV</a>
+    <a href="addproduct.html">Add Product</a>
+  </div>
+</nav>

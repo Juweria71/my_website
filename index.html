@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PriceWise AI compares online product prices, tracks changes and predicts price trends.">
+  <title>PriceWise AI — Smarter price decisions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="PriceWise AI home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><path d="M8 27V18m8 9V11m8 16V15m8 12V7"/><path d="m7 12 8-5 9 3 9-6"/></svg>
+      </span>
+      <span>PriceWise <b>AI</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#compare" data-nav="compare">Compare</a>
+      <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="#predictions" data-nav="predictions">AI Forecast</a>
+      <a href="#order-ai" data-nav="order-ai">Order AI</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-button" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
+      <button class="button ghost-button login-trigger">Log in</button>
+      <button class="button primary-button signup-trigger">Start free</button>
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="page active" id="homePage" data-page="home">
+      <div class="hero">
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> AI-powered shopping intelligence</div>
+          <h1>Know the right price.<br><em>Buy at the right time.</em></h1>
+          <p class="hero-subtitle">Compare trusted stores, track every price move and let AI show you when a deal is actually worth it.</p>
+          <form class="hero-search" id="heroSearch">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="heroSearchInput" type="search" placeholder="Search a product — try “headphones”" aria-label="Search for a product">
+            <button class="button primary-button" type="submit">Compare prices</button>
+          </form>
+          <div class="search-suggestions">
+            <span>Trending:</span>
+            <button data-search="headphones">Headphones</button>
+            <button data-search="smartphone">Smartphones</button>
+            <button data-search="laptop">Laptops</button>
+          </div>
+          <div class="hero-trust">
+            <div class="avatar-stack"><span>AM</span><span>JK</span><span>LW</span><span>+2k</span></div>
+            <div><strong>4.9/5</strong><small>from smart shoppers</small></div>
+            <div class="divider"></div>
+            <div><strong>$284</strong><small>average yearly savings</small></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Price comparison preview">
+          <div class="floating-pill pill-saved"><span>↘</span><b>$78 saved</b><small>this month</small></div>
+          <div class="floating-pill pill-alert"><span>✓</span><b>Price drop!</b><small>Sony WH-1000XM5</small></div>
+          <div class="product-stage">
+            <div class="stage-top">
+              <div><small>Best price found</small><h3>Sony WH-1000XM5</h3></div>
+              <span class="live-badge"><i></i> Live</span>
+            </div>
+            <div class="headphone-art" aria-hidden="true">
+              <div class="headband"></div><div class="cup cup-left"></div><div class="cup cup-right"></div>
+            </div>
+            <div class="price-main"><span>$</span>299<small>.99</small></div>
+            <div class="price-change">↓ 21% from average</div>
+            <div class="mini-chart">
+              <svg viewBox="0 0 440 105" preserveAspectRatio="none">
+                <defs><linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c5ce7" stop-opacity=".35"/><stop offset="1" stop-color="#6c5ce7" stop-opacity="0"/></linearGradient></defs>
+                <path class="chart-area" d="M0 26 C45 17, 68 36, 110 31 S176 49, 220 42 S286 58, 327 53 S392 75, 440 67 L440 105 L0 105Z"/>
+                <path class="chart-line" d="M0 26 C45 17, 68 36, 110 31 S176 49, 220 42 S286 58, 327 53 S392 75, 440 67"/>
+              </svg>
+              <div class="chart-labels"><span>May 3</span><span>May 10</span><span>May 17</span><span>Today</span></div>
+            </div>
+            <div class="store-row">
+              <div class="store-icon amazon">a</div><div><b>Amazon</b><small>Free delivery</small></div>
+              <div class="store-price"><b>$299.99</b><small>Best price</small></div>
+              <button class="round-arrow" data-product="sony">→</button>
+            </div>
+            <div class="store-row muted-row">
+              <div class="store-icon bestbuy">B</div><div><b>Best Buy</b><small>Pickup available</small></div>
+              <div class="store-price"><b>$319.99</b><small>+$20.00</small></div>
+              <button class="round-arrow" data-product="sony">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="trusted-strip">
+        <span>Comparing prices across</span>
+        <div class="retailer-logo">amazon</div><div class="retailer-logo">Walmart</div><div class="retailer-logo">eBay</div><div class="retailer-logo">BEST BUY</div><div class="retailer-logo">Target</div>
+      </section>
+
+      <section class="section how-section">
+        <div class="section-heading">
+          <div><span class="eyebrow">SMARTER SHOPPING</span><h2>One search. Every advantage.</h2></div>
+          <p>PriceWise brings comparison, history and predictions together so you never have to guess again.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card feature-purple">
+            <span class="feature-number">01</span><div class="feature-icon">⌕</div>
+            <h3>Compare instantly</h3><p>See verified prices from multiple stores in one clean, unbiased view.</p>
+            <a href="#compare">Explore comparison <span>→</span></a>
+          </article>
+          <article class="feature-card feature-cyan">
+            <span class="feature-number">02</span><div class="feature-icon">↘</div>
+            <h3>Track every change</h3><p>Follow products over time and get notified the moment a price drops.</p>
+            <a href="#dashboard">View tracking <span>→</span></a>
+          </article>
+          <article class="feature-card feature-green">
+            <span class="feature-number">03</span><div class="feature-icon">✦</div>
+            <h3>Predict the best time</h3><p>Our AI analyses price patterns to suggest whether to buy now or wait.</p>
+            <a href="#predictions">See AI forecasts <span>→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section insight-section">
+        <div class="insight-panel">
+          <div class="insight-content">
+            <span class="eyebrow light">PRICEWISE INTELLIGENCE</span>
+            <h2>Not just a lower price.<br>A smarter decision.</h2>
+            <p>PriceWise explains the evidence behind every forecast. See historical range, recent momentum and model confidence before deciding.</p>
+            <div class="metric-row">
+              <div><strong>93%</strong><span>Forecast confidence</span></div>
+              <div><strong>24/7</strong><span>Price monitoring</span></div>
+              <div><strong>5+</strong><span>Major retailers</span></div>
+            </div>
+            <a class="button light-button" href="#predictions">See how predictions work</a>
+          </div>
+          <div class="prediction-widget">
+            <div class="prediction-head"><span>AI price forecast</span><b>● LIVE MODEL</b></div>
+            <div class="forecast-product"><div class="phone-art">◫</div><div><small>Apple iPhone 15 · 128GB</small><h4>Likely to drop in 12–18 days</h4></div></div>
+            <div class="forecast-range">
+              <div><small>Current</small><b>$799</b></div><div class="range-arrow">→</div><div><small>Predicted</small><b class="green">$749–769</b></div>
+            </div>
+            <div class="confidence"><div><span>Model confidence</span><b>88%</b></div><div class="confidence-bar"><i style="width:88%"></i></div></div>
+            <div class="recommendation"><span class="recommend-icon">◷</span><div><b>Our recommendation</b><p>Wait if you can. Similar seasonal patterns suggest a price reduction soon.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section">
+        <span class="eyebrow">YOUR NEXT DEAL IS WAITING</span>
+        <h2>Stop overpaying.<br>Start shopping wisely.</h2>
+        <p>Track your first 10 products free. No credit card required.</p>
+        <button class="button primary-button signup-trigger">Create free account →</button>
+      </section>
+    </section>
+
+    <section class="page app-page" id="comparePage" data-page="compare">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar-label">WORKSPACE</div>
+          <a href="#dashboard"><span>⌂</span> Overview</a>
+          <a class="active" href="#compare"><span>⌕</span> Compare products</a>
+          <a href="#tracking"><span>◎</span> Price tracking <b id="trackingBadge">3</b></a>
+          <a href="#predictions"><span>✦</span> AI predictions</a>
+          <a href="#alerts"><span>♢</span> Alerts <b>2</b></a>
+          <div class="sidebar-label">ACCOUNT</div>
+          <a href="#settings"><span>⚙</span> Settings</a>
+          <div class="upgrade-card"><span>✦</span><b>Unlock unlimited tracking</b><p>Go Pro for deeper forecasts and reports.</p><button class="button small-button">View plans</button></div>
+        </aside>
+        <div class="workspace">
+          <div class="workspace-head">
+            <div><span class="page-kicker">PRODUCT DISCOVERY</span><h1>Compare prices</h1><p>Find the strongest offer across verified retailers.</p></div>
+            <div class="profile-chip"><span>AM</span><div><b>Alex Morgan</b><small>Free plan</small></div></div>
+          </div>
+          <div class="compare-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="productSearch" type="search" placeholder="Search products, brands or categories…">
+            <select id="categoryFilter" aria-label="Product category">
+  <option value="all">All Categories</option>
+  <option value="appliances">Appliances</option>
+  <option value="cameras">Cameras</option>
+  <option value="gaming">Gaming</option>
+  <option value="smarttv">Smart TVs</option>
+  <option value="tablets">Tablets</option>
+  <option value="phones">Phones</option>
+  <option value="laptops">Laptops</option>
+</select>
+          </div>
+          <div class="result-toolbar"><span id="resultCount">4 products found</span><select id="sortProducts"><option value="recommended">Recommended</option><option value="price-low">Lowest price</option><option value="discount">Biggest discount</option></select></div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page app-page" id="dashboardPage" data-page="dashboard">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar-label">WORKSPACE</div>
+          <a class="active" href="#dashboard"><span>⌂</span> Overview</a>
+          <a href="#compare"><span>⌕</span> Compare products</a>
+          <a href="#tracking"><span>◎</span> Price tracking <b>3</b></a>
+          <a href="#predictions"><span>✦</span> AI predictions</a>
+          <a href="#alerts"><span>♢</span> Alerts <b>2</b></a>
+          <div class="sidebar-label">ACCOUNT</div>
+          <a href="#settings"><span>⚙</span> Settings</a>
+          <div class="upgrade-card"><span>✦</span><b>Unlock unlimited tracking</b><p>Go Pro for deeper forecasts and reports.</p><button class="button small-button">View plans</button></div>
+        </aside>
+        <div class="workspace">
+          <div class="workspace-head">
+            <div><span class="page-kicker">SATURDAY, JUNE 20</span><h1>Good morning, Alex.</h1><p>Here is what changed across your tracked products.</p></div>
+            <button class="button primary-button" onclick="location.hash='compare'">+ Track a product</button>
+          </div>
+          <div class="stats-grid">
+            <article><span class="stat-icon purple">◎</span><div><small>Products tracked</small><strong id="trackedCount">3</strong><em>of 10 free</em></div></article>
+            <article><span class="stat-icon green">↘</span><div><small>Price drops</small><strong>2</strong><em class="positive">This week</em></div></article>
+            <article><span class="stat-icon cyan">$</span><div><small>Potential savings</small><strong>$126</strong><em>Across watchlist</em></div></article>
+            <article><span class="stat-icon amber">✦</span><div><small>AI opportunities</small><strong>3</strong><em>Worth reviewing</em></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel span-two">
+              <div class="panel-head"><div><h3>Portfolio price movement</h3><p>Combined tracked-product index</p></div><select><option>Last 30 days</option><option>Last 90 days</option></select></div>
+              <div class="large-chart"><svg id="portfolioChart" viewBox="0 0 800 260" preserveAspectRatio="none"></svg><div class="chart-y-labels"><span>$1,500</span><span>$1,400</span><span>$1,300</span><span>$1,200</span></div></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><div><h3>AI opportunity</h3><p>Best action today</p></div><span class="ai-chip">✦ AI</span></div>
+              <div class="opportunity-product"><div class="mini-phone">◫</div><div><b>iPhone 15 · 128GB</b><small>Current: $799</small></div></div>
+              <div class="opportunity-copy"><span class="wait-chip">WAIT 12–18 DAYS</span><h4>Potentially save $30–50</h4><p>Seasonal data suggests a likely reduction with 88% model confidence.</p></div>
+              <a href="#predictions">View full forecast →</a>
+            </section>
+            <section class="panel span-two">
+              <div class="panel-head"><div><h3>Tracked products</h3><p>Latest prices and movement</p></div><a href="#tracking">View all →</a></div>
+              <div id="dashboardTrackedList" class="tracked-list"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><div><h3>Recent alerts</h3><p>Last 7 days</p></div></div>
+              <div class="alert-list">
+                <div><span class="alert-dot green-bg">↘</span><p><b>Sony XM5 dropped 8%</b><small>Amazon · 2 hours ago</small></p></div>
+                <div><span class="alert-dot purple-bg">✓</span><p><b>Target price reached</b><small>Apple Watch S9 · Yesterday</small></p></div>
+                <div><span class="alert-dot amber-bg">✦</span><p><b>New forecast available</b><small>iPhone 15 · 2 days ago</small></p></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page app-page" id="predictionsPage" data-page="predictions">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar-label">WORKSPACE</div>
+          <a href="#dashboard"><span>⌂</span> Overview</a><a href="#compare"><span>⌕</span> Compare products</a><a href="#tracking"><span>◎</span> Price tracking <b>3</b></a><a class="active" href="#predictions"><span>✦</span> AI predictions</a><a href="#alerts"><span>♢</span> Alerts <b>2</b></a>
+          <div class="sidebar-label">ACCOUNT</div><a href="#settings"><span>⚙</span> Settings</a>
+        </aside>
+        <div class="workspace">
+          <div class="workspace-head"><div><span class="page-kicker">PRICEWISE INTELLIGENCE</span><h1>AI price forecasts</h1><p>Evidence-led predictions for the products you care about.</p></div><span class="model-status"><i></i> Model healthy · v2.4</span></div>
+          <div class="forecast-layout">
+            <section class="panel forecast-main">
+              <div class="forecast-selector"><label for="forecastProduct">Forecast product</label><select id="forecastProduct"></select></div>
+              <div id="forecastHero"></div>
+              <div class="forecast-chart-wrap"><div class="forecast-legend"><span><i class="actual"></i>Historical price</span><span><i class="predicted"></i>AI forecast</span><span><i class="range"></i>Expected range</span></div><svg id="forecastChart" viewBox="0 0 900 330" preserveAspectRatio="none"></svg></div>
+            </section>
+            <aside class="forecast-sidebar">
+              <section class="panel"><div class="panel-head"><div><h3>Why this forecast?</h3><p>Signals influencing the model</p></div><span class="ai-chip">✦ AI</span></div><div id="signalList" class="signal-list"></div></section>
+              <section class="panel model-card"><h3>Model transparency</h3><div><span>Algorithm</span><b>Gradient Boosting</b></div><div><span>Forecast horizon</span><b>14 days</b></div><div><span>Historical MAE</span><b>$12.40</b></div><div><span>Last trained</span><b>June 18, 2026</b></div><p>Forecasts are decision support, not guarantees. Live prices can change at any time.</p></section>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page app-page" id="orderAiPage" data-page="order-ai">
+      <div class="order-ai-hero">
+        <div class="order-ai-intro">
+          <span class="model-live"><i></i> SUPPLIED MODEL · LIVE</span>
+          <h1>Predict an order's<br><em>true expected value.</em></h1>
+          <p>Your 100-tree Random Forest analyses pricing, discount, tax, customer value and fulfilment signals to estimate the final order value and its high-value probability.</p>
+          <div class="model-proof">
+            <div><strong>100</strong><span>Decision trees</span></div>
+            <div><strong>40</strong><span>Engineered features</span></div>
+            <div><strong>90%</strong><span>Prediction interval</span></div>
+          </div>
+        </div>
+        <div class="model-orbit" aria-hidden="true">
+          <div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div>
+          <div class="model-core"><span>✦</span><b>RF</b><small>MODEL</small></div>
+          <span class="orbit-node node-a">Tax</span><span class="orbit-node node-b">Price</span><span class="orbit-node node-c">CLV</span><span class="orbit-node node-d">Margin</span>
+        </div>
+      </div>
+      <div class="order-ai-workspace">
+        <section class="order-form-card">
+          <div class="order-card-head"><div><span>ORDER SIGNALS</span><h2>Build a prediction</h2><p>Enter the commercial details. The service engineers the remaining model fields automatically.</p></div><button type="button" id="loadPremiumExample">Load premium example</button></div>
+          <form id="orderPredictionForm">
+            <div class="form-section"><h3><span>01</span> Basket economics</h3><div class="model-form-grid">
+              <label>Unit price ($)<input name="unit_price" type="number" min="1" max="5000" step=".01" value="149.99" required></label>
+              <label>Quantity<input name="quantity" type="number" min="1" max="9" value="2" required></label>
+              <label>Discount (%)<input name="discount_percent" type="number" min="0" max="40" step=".5" value="10"></label>
+              <label>Shipping cost ($)<input name="shipping_cost" type="number" min="0" max="50" step=".01" value="9.99"></label>
+              <label>Tax rate (%)<input name="tax_percent" type="number" min="0" max="30" step=".1" value="8"></label>
+              <label>Profit margin (%)<input name="profit_margin_percent" type="number" min="3" max="55" step=".1" value="24"></label>
+            </div></div>
+            <div class="form-section"><h3><span>02</span> Customer context</h3><div class="model-form-grid">
+              <label>Customer age<input name="customer_age" type="number" min="18" max="75" value="34"></label>
+              <label>Lifetime value ($)<input name="customer_lifetime_value" type="number" min="20" max="50000" step="10" value="2500"></label>
+              <label>Customer segment<select name="segment"><option>Consumer</option><option>Corporate</option><option>Small Business</option><option>Premium</option></select></label>
+              <label>Membership<select name="membership"><option>Silver</option><option>Bronze</option><option>Gold</option><option>Platinum</option></select></label>
+              <label>Country<select name="country"><option>Kenya</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Germany</option><option>India</option></select></label>
+              <label>Device<select name="device_type"><option>Mobile</option><option>Desktop</option><option>Tablet</option></select></label>
+            </div></div>
+            <div class="form-section"><h3><span>03</span> Order & fulfilment</h3><div class="model-form-grid">
+              <label>Product category<select name="category"><option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Sports</option><option>Books</option><option>Other</option></select></label>
+              <label>Payment method<select name="payment_method"><option>Credit Card</option><option>Debit Card</option><option>Mobile Money</option><option>PayPal</option><option>Bank Transfer</option><option>Cash</option></select></label>
+              <label>Shipping method<select name="shipping_method"><option>Standard</option><option>Express</option><option>Overnight</option></select></label>
+              <label>Delivery days<input name="delivery_days" type="number" min="1" max="12" value="4"></label>
+              <label>Review rating<input name="review_rating" type="number" min="1" max="5" step=".1" value="4.2"></label>
+              <label>Order date<input name="order_date" type="date" value="2025-06-20"></label>
+            </div><div class="model-checks"><label><input name="coupon_used" type="checkbox"> Coupon applied</label><label><input name="holiday_season" type="checkbox"> Holiday season</label></div></div>
+            <button class="predict-button" type="submit"><span>✦</span><b>Run Random Forest prediction</b><small>Powered by your supplied .pkl model</small></button>
+          </form>
+        </section>
+        <aside class="prediction-result-card" id="orderPredictionResult">
+          <div class="result-placeholder"><span>✦</span><h3>Your model is ready</h3><p>Complete the order signals and run a prediction to reveal expected value, uncertainty and the model's key drivers.</p></div>
+        </aside>
+      </div>
+      <section class="model-explain-section">
+        <div><span class="page-kicker">MODEL TRANSPARENCY</span><h2>What is driving the prediction?</h2><p>The supplied model is a Random Forest regressor trained on 40 encoded e-commerce features. These are its strongest learned signals.</p></div>
+        <div class="importance-bars">
+          <div><label><b>Tax amount</b><span>75.65%</span></label><i><em style="width:75.65%"></em></i></div>
+          <div><label><b>High-value indicator</b><span>9.48%</span></label><i><em style="width:9.48%"></em></i></div>
+          <div><label><b>Profit amount</b><span>5.07%</span></label><i><em style="width:5.07%"></em></i></div>
+          <div><label><b>Customer lifetime value</b><span>3.25%</span></label><i><em style="width:3.25%"></em></i></div>
+          <div><label><b>Unit price</b><span>1.84%</span></label><i><em style="width:1.84%"></em></i></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page app-page simple-page" id="trackingPage" data-page="tracking">
+      <div class="app-shell"><aside class="sidebar"><div class="sidebar-label">WORKSPACE</div><a href="#dashboard"><span>⌂</span> Overview</a><a href="#compare"><span>⌕</span> Compare products</a><a class="active" href="#tracking"><span>◎</span> Price tracking <b>3</b></a><a href="#predictions"><span>✦</span> AI predictions</a><a href="#alerts"><span>♢</span> Alerts <b>2</b></a></aside><div class="workspace"><div class="workspace-head"><div><span class="page-kicker">WATCHLIST</span><h1>Price tracking</h1><p>Products PriceWise is monitoring for you around the clock.</p></div><button class="button primary-button" onclick="location.hash='compare'">+ Add product</button></div><div id="fullTrackedList" class="tracking-cards"></div></div></div>
+    </section>
+
+    <section class="page app-page simple-page" id="alertsPage" data-page="alerts">
+      <div class="app-shell"><aside class="sidebar"><div class="sidebar-label">WORKSPACE</div><a href="#dashboard"><span>⌂</span> Overview</a><a href="#compare"><span>⌕</span> Compare products</a><a href="#tracking"><span>◎</span> Price tracking <b>3</b></a><a href="#predictions"><span>✦</span> AI predictions</a><a class="active" href="#alerts"><span>♢</span> Alerts <b>2</b></a></aside><div class="workspace"><div class="workspace-head"><div><span class="page-kicker">NOTIFICATIONS</span><h1>Price alerts</h1><p>Control when and how PriceWise contacts you.</p></div><button class="button primary-button" id="createAlertButton">+ Create alert</button></div><div class="alert-management"><section class="panel"><h3>Active alerts</h3><div id="activeAlerts"></div></section><section class="panel notification-settings"><h3>Delivery settings</h3><label><span><b>Email alerts</b><small>alex@example.com</small></span><input type="checkbox" checked></label><label><span><b>Browser notifications</b><small>Instant updates on this device</small></span><input type="checkbox" checked></label><label><span><b>Weekly summary</b><small>Every Monday morning</small></span><input type="checkbox"></label></section></div></div></div>
+    </section>
+
+    <section class="page app-page simple-page" id="settingsPage" data-page="settings">
+      <div class="app-shell"><aside class="sidebar"><div class="sidebar-label">WORKSPACE</div><a href="#dashboard"><span>⌂</span> Overview</a><a href="#compare"><span>⌕</span> Compare products</a><a href="#tracking"><span>◎</span> Price tracking</a><a href="#predictions"><span>✦</span> AI predictions</a><div class="sidebar-label">ACCOUNT</div><a class="active" href="#settings"><span>⚙</span> Settings</a></aside><div class="workspace"><div class="workspace-head"><div><span class="page-kicker">ACCOUNT</span><h1>Settings</h1><p>Manage your profile, preferences and data.</p></div></div><div class="settings-grid"><section class="panel"><h3>Profile</h3><label>Full name<input type="text" value="Alex Morgan"></label><label>Email address<input type="email" value="alex@example.com"></label><label>Preferred currency<select><option>USD — US Dollar</option><option>KES — Kenyan Shilling</option><option>EUR — Euro</option></select></label><button class="button primary-button save-settings">Save changes</button></section><section class="panel"><h3>Shopping preferences</h3><label>Default category<select><option>All categories</option><option>Electronics</option><option>Home & kitchen</option></select></label><label>Forecast style<select><option>Balanced</option><option>Conservative</option><option>Opportunity focused</option></select></label><label class="switch-line"><span><b>Include shipping cost</b><small>Use available delivery estimates</small></span><input type="checkbox" checked></label><label class="switch-line"><span><b>Dark mode</b><small>Reduce glare in low light</small></span><input id="settingsDarkMode" type="checkbox"></label></section></div></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M8 27V18m8 9V11m8 16V15m8 12V7"/><path d="m7 12 8-5 9 3 9-6"/></svg></span><span>PriceWise <b>AI</b></span></a><p>Smarter evidence for better buying decisions.</p></div>
+    <div><b>Product</b><a href="#compare">Compare</a><a href="#tracking">Tracking</a><a href="#predictions">AI forecasts</a></div>
+    <div><b>Project</b><a href="#home">About</a><a href="#dashboard">Dashboard</a><a href="#settings">Settings</a></div>
+    <div><b>Built for graduation</b><p>Responsive · Accessible · Interactive</p><small>© 2026 PriceWise AI</small></div>
+  </footer>
+
+  <dialog id="authDialog" class="modal">
+    <button class="modal-close" aria-label="Close">×</button>
+    <div class="modal-brand"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M8 27V18m8 9V11m8 16V15m8 12V7"/><path d="m7 12 8-5 9 3 9-6"/></svg></span></div>
+    <h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Log in to view your tracked products and alerts.</p>
+    <form id="authForm">
+      <label class="name-field">Full name<input type="text" placeholder="Alex Morgan"></label>
+      <label>Email address<input type="email" required placeholder="you@example.com"></label>
+      <label>Password<input type="password" required minlength="6" placeholder="At least 6 characters"></label>
+      <div class="form-row"><label class="check-label"><input type="checkbox"> Remember me</label><a href="#">Forgot password?</a></div>
+      <button class="button primary-button full-button" type="submit">Log in</button>
+    </form>
+    <p class="modal-switch">New to PriceWise? <button id="authSwitch">Create an account</button></p>
+  </dialog>
+
+  <dialog id="productDialog" class="modal product-modal">
+    <button class="modal-close" aria-label="Close">×</button>
+    <div id="productDialogContent"></div>
+  </dialog>
+
+  <dialog id="alertDialog" class="modal">
+    <button class="modal-close" aria-label="Close">×</button>
+    <h2>Create price alert</h2><p>Tell PriceWise when this product becomes a deal for you.</p>
+    <form id="alertForm">
+      <label>Product<select id="alertProduct"></select></label>
+      <label>Alert type<select id="alertType"><option value="target">Target price</option><option value="drop">Percentage drop</option></select></label>
+      <label>Target value<input id="alertTarget" type="number" min="1" required value="275"></label>
+      <button class="button primary-button full-button" type="submit">Create alert</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
